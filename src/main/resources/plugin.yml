@@ -1,0 +1,8 @@
+name: TribusKitPvP
+version: ${project.version}
+main: eu.tribusmc.tribuskitpvp.Core
+api-version: 1.16
+load: STARTUP
+authors: [ Slinkyyy, Scarmo ]
+description: Exclusive KitPvP plugin.
+website: https://tribusmc.eu
