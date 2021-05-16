@@ -1,4 +1,4 @@
-package eu.tribusmc.tribuskitpvp.base.gui;
+package eu.tribusmc.tribuskitpvp.gui;
 
 import com.avaje.ebean.validation.NotNull;
 import com.cryptomorin.xseries.XMaterial;
@@ -7,7 +7,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 
@@ -30,9 +29,9 @@ public abstract class GUI implements Listener {
      *
      * Base Constructor, Creates a new GUI instance
      *
-     * @param paramPlayer       | To invoke the players inventory
-     * @param paramInternalName | Internal name for the GUI instance
-     * @param paramTitle        | Title for the GUI
+     * @param paramPlayer        To invoke the players inventory
+     * @param paramInternalName  Internal name for the GUI instance
+     * @param paramTitle         Title for the GUI
      */
     private GUI(Player paramPlayer, String paramInternalName, String paramTitle, int paramSize) {
             this.player = paramPlayer;

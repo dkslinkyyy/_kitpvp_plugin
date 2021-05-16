@@ -1,4 +1,4 @@
-package eu.tribusmc.tribuskitpvp.base.gui;
+package eu.tribusmc.tribuskitpvp.gui;
 
 import com.avaje.ebean.validation.NotNull;
 import com.cryptomorin.xseries.XMaterial;

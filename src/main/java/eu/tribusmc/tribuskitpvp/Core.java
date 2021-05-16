@@ -1,15 +1,6 @@
 package eu.tribusmc.tribuskitpvp;
 
-import eu.tribusmc.tribuskitpvp.misc.timer.Timer;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 
 public final class Core extends JavaPlugin {
 
@@ -23,6 +14,7 @@ public final class Core extends JavaPlugin {
         // Plugin startup logic
 
 
+        /*
         Timer loadLogo = new Timer(Timer.TimerType.DELAY, 1);
 
         loadLogo.execute(time -> {
@@ -46,8 +38,12 @@ public final class Core extends JavaPlugin {
     }
 
 
+         */
 
 
+
+
+    /*
 
     private void loadLogo() {
         int next = 0;
@@ -86,6 +82,9 @@ public final class Core extends JavaPlugin {
         };
     }
 
+     */
+
+    }
     @Override
     public void onDisable() {
         // Plugin shutdown logic

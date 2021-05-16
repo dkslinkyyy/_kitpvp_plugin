@@ -1,9 +1,9 @@
-package eu.tribusmc.tribuskitpvp.misc.timer;
+package eu.tribusmc.tribuskitpvp.utils;
 
 import eu.tribusmc.tribuskitpvp.Core;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class Timer {
+public class TimerUtil {
 
 
     private TimerType timerType;
@@ -22,7 +22,7 @@ public class Timer {
     private RunnableCode whenFinished, executable;
 
 
-    public Timer(TimerType timerType, int time) {
+    public TimerUtil(TimerType timerType, int time) {
         this.timerType = timerType;
         this.time = time == 0 ? time = 10 : time;
         this.tmpTime = time;
@@ -30,7 +30,7 @@ public class Timer {
         run();
     }
 
-    public Timer resetAtFinish(boolean reset) {
+    public TimerUtil resetAtFinish(boolean reset) {
         this.reset = reset;
 
         return this;
@@ -40,17 +40,17 @@ public class Timer {
         return time;
     }
 
-    public Timer execute(RunnableCode runnableCode) {
+    public TimerUtil execute(RunnableCode runnableCode) {
         this.executable = runnableCode;
         return this;
     }
 
-    public Timer whenFinished(RunnableCode whenFinished) {
+    public TimerUtil whenFinished(RunnableCode whenFinished) {
         this.whenFinished = whenFinished;
         return this;
     }
 
-    public Timer run(boolean run) {
+    public TimerUtil run(boolean run) {
         this.run = run;
         return this;
     }

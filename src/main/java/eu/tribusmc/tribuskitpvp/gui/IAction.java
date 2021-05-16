@@ -1,4 +1,4 @@
-package eu.tribusmc.tribuskitpvp.base.gui;
+package eu.tribusmc.tribuskitpvp.gui;
 
 
 import org.bukkit.event.block.Action;

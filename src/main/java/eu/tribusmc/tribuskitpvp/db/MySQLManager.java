@@ -1,4 +1,4 @@
-package eu.tribusmc.tribuskitpvp.base.db;
+package eu.tribusmc.tribuskitpvp.db;
 
 import com.avaje.ebean.validation.NotNull;
 
