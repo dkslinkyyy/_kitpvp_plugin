@@ -73,5 +73,10 @@
             <systemPath>${project.basedir}/depend/spigot.jar</systemPath>
             <scope>system</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.cryptomorin</groupId>
+            <artifactId>XSeries</artifactId>
+            <version>7.9.1</version>
+        </dependency>
     </dependencies>
 </project>
