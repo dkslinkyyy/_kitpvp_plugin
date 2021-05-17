@@ -1,6 +1,9 @@
 package eu.tribusmc.tribuskitpvp;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import pro.husk.mysql.MySQL;
+
+import java.sql.SQLException;
 
 public final class Core extends JavaPlugin {
 
@@ -11,6 +14,26 @@ public final class Core extends JavaPlugin {
     @Override
     public void onEnable() {
         i = this;
+
+
+        MySQL mySQL = new MySQL("jdbc:mysql://localhost:3306/testing", "root", "");
+
+        String table = "CREATE TABLE AgentDetail ("
+                + "idNo INT(64) NOT NULL AUTO_INCREMENT,"
+                + "initials VARCHAR(2),"
+                + "agentDate DATE,"
+                + "agentCount INT(64))";
+
+        try {
+            mySQL.query(table, System.out::println);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            System.out.println(mySQL.getConnection() + "");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         // Plugin startup logic
 
 

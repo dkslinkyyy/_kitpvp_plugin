@@ -1,4 +1,7 @@
 package eu.tribusmc.tribuskitpvp.storage;
 
-public class StorageAbstract {
+public abstract class StorageAbstract <T> {
+
+
+    public abstract T[] getAll();
 }
