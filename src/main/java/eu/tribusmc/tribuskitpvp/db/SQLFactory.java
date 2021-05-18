@@ -36,6 +36,21 @@ public class SQLFactory {
         }
     }
 
+    public void readColumn(String table, String column) {
+        String query = "SELECT * FROM "+ table +" WHERE 1";
+
+        try {
+            mySQL.query(query, result -> {
+                if(result.next()) {
+                    System.out.println(result.getFloat(result.findColumn(column)));
+
+                }
+            });
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
 
     public static String removeLastCharRegex(String s) {
         return (s == null) ? null : s.replaceAll(".$", "");

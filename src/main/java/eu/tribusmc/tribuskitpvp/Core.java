@@ -13,7 +13,6 @@ public final class Core extends JavaPlugin {
     public static Core i;
 
 
-
     @Override
     public void onEnable() {
         i = this;
@@ -21,16 +20,21 @@ public final class Core extends JavaPlugin {
 
         MySQL mySQL = new MySQL("jdbc:mysql://localhost:3306/testing", "root", "");
 
-
         try {
             SQLFactory sqlFactory = new SQLFactory(mySQL);
+
+            /*
             sqlFactory.createTable("TMCPlayer", new DataColumn[]{
-
                     new DataColumn("UUID", DataType.VARCHAR),
-                    new DataColumn("Bukkit Name", DataType.VARCHAR)
-
+                    new DataColumn("Bukkit_name", DataType.VARCHAR),
+                    new DataColumn("Kills", DataType.INT),
+                    new DataColumn("Deaths", DataType.INT),
+                    new DataColumn("k_d_Ratio", DataType.FLOAT),
             });
 
+             */
+
+            sqlFactory.readColumn("tmcplayer", "k_d_Ratio");
 
 
         } catch (SQLException e) {
