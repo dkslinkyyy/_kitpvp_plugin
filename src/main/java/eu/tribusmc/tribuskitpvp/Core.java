@@ -22,21 +22,16 @@ public final class Core extends JavaPlugin {
         MySQL mySQL = new MySQL("jdbc:mysql://localhost:3306/testing", "root", "");
 
 
+        SQLFactory sqlFactory = new SQLFactory(mySQL);
+
         try {
-            SQLFactory sqlFactory = new SQLFactory(mySQL);
-            sqlFactory.createTable("TMCPlayer", new DataColumn[]{
-
-                    new DataColumn("UUID", DataType.VARCHAR),
-                    new DataColumn("Bukkit Name", DataType.VARCHAR)
-
-            });
-
-
-
+            boolean b = sqlFactory.tableExists(mySQL.getConnection(), "TMCPlayer");
+            System.out.println(b);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+        sqlFactory.readDataFromTable("TMCPlayer").print();
 
     }
 

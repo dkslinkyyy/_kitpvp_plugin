@@ -2,8 +2,8 @@ package eu.tribusmc.tribuskitpvp.db;
 
 public enum DataType {
 
-    VARCHAR("varchar", 0),
-    INT("int", 0),
+    VARCHAR("varchar", 255),
+    INT("int", 255),
     BYTE("byte", 0);
 
 
