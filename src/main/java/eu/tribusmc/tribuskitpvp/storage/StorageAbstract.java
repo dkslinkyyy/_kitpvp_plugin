@@ -15,7 +15,7 @@ public abstract class StorageAbstract <T> {
 
     public abstract T[] getAll();
 
-    
+
     public void addToCache(T element) {
         cachedElements.add(element);
     }

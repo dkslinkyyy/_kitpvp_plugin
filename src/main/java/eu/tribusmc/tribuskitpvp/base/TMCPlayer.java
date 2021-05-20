@@ -25,7 +25,7 @@ public class TMCPlayer  {
     public Player getPlayer() {
         return Bukkit.getPlayer(uuid);
     }
-    1
+
     public String getPlayerName() {
         return playerName;
     }
