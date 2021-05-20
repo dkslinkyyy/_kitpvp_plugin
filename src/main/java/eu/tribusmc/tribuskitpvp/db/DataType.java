@@ -2,9 +2,8 @@ package eu.tribusmc.tribuskitpvp.db;
 
 public enum DataType {
 
-    VARCHAR("varchar", 255),
-    INT("int", 255),
-    FLOAT("float", 25),
+    VARCHAR("varchar", 0),
+    INT("int", 0),
     BYTE("byte", 0);
 
 
@@ -24,8 +23,7 @@ public enum DataType {
         return size;
     }
 
-    public DataType setSize(int size) {
+    public void setSize(int size) {
         this.size = size;
-        return this;
     }
 }
