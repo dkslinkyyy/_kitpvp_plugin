@@ -36,18 +36,17 @@ public class SQLFactory {
         }
     }
 
-    public void readColumn(String table, String column) {
+    public void readColumn(String table) {
         String query = "SELECT * FROM "+ table +" WHERE 1";
 
-        try {
-            mySQL.query(query, result -> {
-                if(result.next()) {
-                    System.out.println(result.getFloat(result.findColumn(column)));
 
-                }
-            });
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        try (ResultSet results = mySQL.query(query)) {
+            // Do something with the ResultSet
+
+            System.out.println(results.getRow());
+            results.getStatement().close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

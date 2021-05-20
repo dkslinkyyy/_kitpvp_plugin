@@ -34,7 +34,7 @@ public final class Core extends JavaPlugin {
 
              */
 
-            sqlFactory.readColumn("tmcplayer", "k_d_Ratio");
+            sqlFactory.readColumn("tmcplayer");
 
 
         } catch (SQLException e) {
