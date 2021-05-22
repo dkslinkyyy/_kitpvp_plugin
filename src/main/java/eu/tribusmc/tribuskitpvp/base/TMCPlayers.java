@@ -2,8 +2,10 @@ package eu.tribusmc.tribuskitpvp.base;
 
 import eu.tribusmc.tribuskitpvp.db.SQLFactory;
 import eu.tribusmc.tribuskitpvp.storage.StorageAbstract;
+import org.bukkit.entity.Player;
 
 public class TMCPlayers extends StorageAbstract<TMCPlayers> {
+
 
 
     public TMCPlayers(SQLFactory sqlFactory) {

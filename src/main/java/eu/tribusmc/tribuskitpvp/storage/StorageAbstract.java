@@ -7,7 +7,7 @@ import java.util.List;
 
 public abstract class StorageAbstract <T> {
 
-    private final List<T> cachedElements;
+    protected final List<T> cachedElements;
 
     public StorageAbstract(SQLFactory sqlFactory) {
         cachedElements = new ArrayList<>();
@@ -15,6 +15,10 @@ public abstract class StorageAbstract <T> {
 
     public abstract T[] getAll();
 
+
+    public boolean isCached(T element) {
+        return cachedElements.contains(element);
+    }
 
     public void addToCache(T element) {
         cachedElements.add(element);

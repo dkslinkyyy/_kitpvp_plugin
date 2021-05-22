@@ -8,23 +8,17 @@ public class Table {
 
     private final String name;
 
-    private final List<Object> dataList;
+    private final HashMap<String, Object> dataList;
 
 
     public Table(String paramName) {
         this.name = paramName;
-        dataList = new ArrayList<>();
+        dataList = new HashMap<>();
     }
 
 
-    public void print() {
-        dataList.forEach(self -> {
-            System.out.println(self + " ");
-        });
-    }
-
-    public void register(Object object) {
-        dataList.add(object);
+    public void register(String columnName, Object object) {
+        dataList.put(columnName, object);
     }
 
     public void flush() {

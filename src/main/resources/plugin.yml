@@ -6,3 +6,5 @@ load: STARTUP
 authors: [ Slinkyyy, Scarmo ]
 description: Exclusive KitPvP plugin.
 website: https://tribusmc.eu
+commands:
+  kitpvp:

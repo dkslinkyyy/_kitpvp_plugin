@@ -1,8 +1,14 @@
 package eu.tribusmc.tribuskitpvp;
 
+import eu.tribusmc.tribuskitpvp.base.BaseImpl;
+import eu.tribusmc.tribuskitpvp.commands.KitPvPCommand;
 import eu.tribusmc.tribuskitpvp.db.DataColumn;
 import eu.tribusmc.tribuskitpvp.db.DataType;
 import eu.tribusmc.tribuskitpvp.db.SQLFactory;
+import eu.tribusmc.tribuskitpvp.gui.PlayerGUI;
+import eu.tribusmc.tribuskitpvp.scoreboard.boards.LobbyScoreboard;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import pro.husk.mysql.MySQL;
 
@@ -13,35 +19,46 @@ public final class Core extends JavaPlugin {
     public static Core i;
 
 
+    public static LobbyScoreboard lobbyScoreboard;
+
     @Override
     public void onEnable() {
         i = this;
 
 
-        MySQL mySQL = new MySQL("jdbc:mysql://localhost:3306/testing", "root", "");
+        getServer().getPluginManager().registerEvents(new BaseImpl(), this);
 
-        try {
-            SQLFactory sqlFactory = new SQLFactory(mySQL);
 
-            /*
-            sqlFactory.createTable("TMCPlayer", new DataColumn[]{
-                    new DataColumn("UUID", DataType.VARCHAR),
-                    new DataColumn("Bukkit_name", DataType.VARCHAR),
-                    new DataColumn("Kills", DataType.INT),
-                    new DataColumn("Deaths", DataType.INT),
-                    new DataColumn("k_d_Ratio", DataType.FLOAT),
+        new KitPvPCommand();
+
+
+        /*
+        if(Bukkit.getOnlinePlayers().size() > 0) {
+            Bukkit.getOnlinePlayers().forEach(o -> {
+                if(o.getLocation().getWorld().getName().equals("Lobby")) {
+                    o.getInventory().clear();
+                    new PlayerGUI(o.getDisplayName(), o);
+                }
+
             });
 
-             */
-
-            sqlFactory.readColumn("tmcplayer", "k_d_Ratio");
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
 
+        /*
 
+        MySQL mySQL = new MySQL("jdbc:mysql://localhost:3306/testing", "root", "");
+
+
+        SQLFactory sqlFactory = new SQLFactory(mySQL);
+        sqlFactory.readColumn("tmcplayer", "k_d_Ratio");
+
+
+         */
+
+    }
+
+    public String trans(String text) {
+        return ChatColor.translateAlternateColorCodes('&', text);
     }
 
     @Override

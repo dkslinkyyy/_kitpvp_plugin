@@ -7,8 +7,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.ClickType;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -40,6 +44,8 @@ public abstract class GUI implements Listener {
             this.size = paramSize;
 
             guiItems = new HashSet<>();
+
+            create();
 
             Core.i.getServer().getPluginManager().registerEvents(this, Core.i);
     }
@@ -73,15 +79,15 @@ public abstract class GUI implements Listener {
 
     @NotNull
     public void addItem(GUIItem guiItem) {
-        GUIItem item = new GUIItem("", XMaterial.GLASS);
-
-
          guiItems.add(guiItem);
-         //TODO: add item to inventory
+         inventory.addItem(guiItem.getOutcome());
     }
 
-
-
+    @NotNull
+    public void addItem(GUIItem guiItem, int slot) {
+        guiItems.add(guiItem);
+        inventory.setItem(slot, guiItem.getOutcome());
+    }
 
     @NotNull
     public Inventory getInventory() {
@@ -91,7 +97,7 @@ public abstract class GUI implements Listener {
 
 
     @NotNull
-    public GUI create() {
+    private GUI create() {
         if(player == null) inventory = Bukkit.createInventory(null, size, title);
         else inventory = player.getInventory();
         return this;
@@ -106,12 +112,28 @@ public abstract class GUI implements Listener {
 
 
     @EventHandler
-    public void onClick(PlayerInteractEvent e) {
+    public void onClick(InventoryClickEvent e) {
 
+        if(e.getCurrentItem() == null || e.getInventory() == null) return;
+        if(e.getCurrentItem().getItemMeta() == null) return;
+
+        GUIItem item = guiItems.stream().filter(gItem -> gItem.getTitle().equals(e.getCurrentItem().getItemMeta().getDisplayName())).findFirst().orElse(null);
+
+
+        assert item != null;
+        item.getAction().onClick(e.getClick(), e.getCurrentItem(), (Player) e.getWhoClicked());
     }
 
     @EventHandler
     public void onInteract(PlayerInteractEvent e) {
+
+        if(e.getItem() == null) return;
+        if(e.getItem().getItemMeta() == null) return;
+
+        GUIItem item = guiItems.stream().filter(gItem -> gItem.getTitle().equals(e.getItem().getItemMeta().getDisplayName())).findFirst().orElse(null);
+
+        assert item != null;
+        item.getAction().onInteract(e.getAction(),e.getItem(), e.getPlayer());
 
     }
 
