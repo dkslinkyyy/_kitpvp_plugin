@@ -84,6 +84,7 @@ public class Timer {
                                 this.cancel();
 
                             }
+                            return;
                         }
 
                         if(executable !=null) executable.run(time);

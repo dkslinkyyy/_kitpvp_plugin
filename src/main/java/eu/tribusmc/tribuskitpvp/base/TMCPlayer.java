@@ -1,5 +1,6 @@
 package eu.tribusmc.tribuskitpvp.base;
 
+import eu.tribusmc.tribuskitpvp.base.kits.IKit;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -17,6 +18,18 @@ public class TMCPlayer  {
         this.kills = kills;
         this.deaths = deaths;
     }
+
+
+    /*
+    public void setCurrentKit(IKit kit) {
+        this.kit = kit;
+    }
+
+    public IKit getCurrentKit() {
+        return kit;
+    }
+
+     */
 
     public UUID getUUID() {
         return uuid;

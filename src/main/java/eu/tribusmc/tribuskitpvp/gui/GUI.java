@@ -121,6 +121,7 @@ public abstract class GUI implements Listener {
 
 
         assert item != null;
+        if(item.getAction() == null) return;
         item.getAction().onClick(e.getClick(), e.getCurrentItem(), (Player) e.getWhoClicked());
     }
 
@@ -133,6 +134,7 @@ public abstract class GUI implements Listener {
         GUIItem item = guiItems.stream().filter(gItem -> gItem.getTitle().equals(e.getItem().getItemMeta().getDisplayName())).findFirst().orElse(null);
 
         assert item != null;
+        if(item.getAction() == null) return;
         item.getAction().onInteract(e.getAction(),e.getItem(), e.getPlayer());
 
     }

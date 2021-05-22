@@ -29,6 +29,8 @@ public class PlayerGUI extends GUI{
 
             @Override
             public void onInteract(Action action, ItemStack item, Player p) {
+                new KitGUI().open(p);
+                /*
                 p.getInventory().clear();
 
                 XPotion speed = XPotion.SPEED;
@@ -47,6 +49,8 @@ public class PlayerGUI extends GUI{
                 p.getInventory().setChestplate(XMaterial.IRON_CHESTPLATE.parseItem());
                 p.getInventory().setLeggings(XMaterial.IRON_LEGGINGS.parseItem());
                 p.getInventory().setBoots(XMaterial.IRON_BOOTS.parseItem());
+
+                 */
             }
         }), 4);
 

@@ -3,7 +3,7 @@ package eu.tribusmc.tribuskitpvp.base.kits.abilities;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.inventory.ItemStack;
 
-public class GraplingHook implements IAbility{
+public class GraplingHook implements IAbility {
 
 
     @Override
@@ -17,7 +17,16 @@ public class GraplingHook implements IAbility{
     }
 
     @Override
+    public int getHoldingSlot() {
+        return 1;
+    }
+
+    @Override
     public void onPlayerDamage() {
+    }
+
+    @Override
+    public void onFishingRoodHook() {
 
     }
 

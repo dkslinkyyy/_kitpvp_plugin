@@ -13,6 +13,8 @@ public interface IAbility {
 
     void onPlayerDamage();
 
+    void onFishingRoodHook();
+
     void onPlaceBlock();
 
     void onBreakBlock();
@@ -20,4 +22,7 @@ public interface IAbility {
     void onInteract();
 
     void onClick();
+
+
+
 }
