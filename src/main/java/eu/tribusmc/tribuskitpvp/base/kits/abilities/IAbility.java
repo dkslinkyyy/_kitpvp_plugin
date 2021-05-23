@@ -1,6 +1,7 @@
 package eu.tribusmc.tribuskitpvp.base.kits.abilities;
 
 import com.cryptomorin.xseries.XMaterial;
+import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.inventory.ItemStack;
 
 public interface IAbility {
@@ -13,7 +14,7 @@ public interface IAbility {
 
     void onPlayerDamage();
 
-    void onFishingRoodHook();
+    Outcome onFishingRoodHook(PlayerFishEvent e);
 
     void onPlaceBlock();
 

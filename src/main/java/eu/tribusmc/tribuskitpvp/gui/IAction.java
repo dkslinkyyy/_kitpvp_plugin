@@ -8,8 +8,8 @@ import org.bukkit.inventory.ItemStack;
 
 public interface IAction {
 
-    void onClick(ClickType clickType, ItemStack item, Player p);
 
-    void onInteract(Action action, ItemStack item, Player p);
+
+    void onAction(Action a, ClickType ct, ItemStack item, Player p);
 
 }

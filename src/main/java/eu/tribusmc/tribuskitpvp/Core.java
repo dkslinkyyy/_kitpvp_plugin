@@ -2,24 +2,16 @@ package eu.tribusmc.tribuskitpvp;
 
 import eu.tribusmc.tribuskitpvp.base.BaseImpl;
 import eu.tribusmc.tribuskitpvp.commands.KitPvPCommand;
-import eu.tribusmc.tribuskitpvp.db.DataColumn;
-import eu.tribusmc.tribuskitpvp.db.DataType;
-import eu.tribusmc.tribuskitpvp.db.SQLFactory;
-import eu.tribusmc.tribuskitpvp.gui.PlayerGUI;
-import eu.tribusmc.tribuskitpvp.scoreboard.boards.LobbyScoreboard;
-import org.bukkit.Bukkit;
+import eu.tribusmc.tribuskitpvp.gui.KitGUI;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
-import pro.husk.mysql.MySQL;
-
-import java.sql.SQLException;
 
 public final class Core extends JavaPlugin {
 
     public static Core i;
 
 
-    public static LobbyScoreboard lobbyScoreboard;
+
 
     @Override
     public void onEnable() {
@@ -30,6 +22,8 @@ public final class Core extends JavaPlugin {
 
 
         new KitPvPCommand();
+
+
 
 
         /*
@@ -57,12 +51,17 @@ public final class Core extends JavaPlugin {
 
     }
 
-    public String trans(String text) {
-        return ChatColor.translateAlternateColorCodes('&', text);
-    }
+
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+    }
+
+
+
+
+    public String trans(String text) {
+        return ChatColor.translateAlternateColorCodes('&', text);
     }
 }
