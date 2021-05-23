@@ -1,0 +1,130 @@
+#This is where you create the scoreboard, the first section will always be the title.
+#Every section after that will be a line displayed on the scoreboard. You can have a max
+#of 15 lines display due to the limitations of minecraft.
+display:
+    #This is the first section, it will always be the title of the scoreboard.
+    #You can also use placeholders here if you want.
+    title:
+      #This is the text that will be display as the title, it can have as many lines as you want and it will automatically rotate through them or
+      #choose a random one, depending on what you set random to.
+      text:
+      - "&6&l"
+      - "&6&lT"
+      - "&6&lTr"
+      - "&6&lTri"
+      - "&6&lTrib"
+      - "&6&lTribu"
+      - "&6&lTribus"
+      - "&6&lTribusM"
+      - "<stay ticks=80>&6&lTribusMC</stay>"
+      - "&6&lTribusM"
+      - "&6&lTribus"
+      - "&6&lTribu"
+      - "&6&lTrib"
+      - "&6&lTri"
+      - "&6&lTr"
+      - "&6&lT"
+      - "&6&l"
+      - "&6&lF"
+      - "&6&lFa"
+      - "&6&lFac"
+      - "&6&lFact"
+      - "&6&lFacti"
+      - "&6&lFaction"
+      - "&6&lFactions&r"
+      - "&6&lFactions&r &7("
+      - "&6&lFactions&r &7(M"
+      - "&6&lFactions&r &7(Ma"
+      - "&6&lFactions&r &7(Map"
+      - "&6&lFactions&r &7(Map 1"
+      - "&6&lFactions&r &7(Map 1)"
+      - "<stay ticks=70>&6&lFactions&r &7(Map 1)</stay>"
+      - "&6&lFactions&r &7(Map 1)"
+      - "&6&lFactions&r &7(Map 1"
+      - "&6&lFactions&r &7(Map "
+      - "&6&lFactions&r &7(Ma"
+      - "&6&lFactions&r &7(M"
+      - "&6&lFactions&r &7("
+      - "&6&lFactions&r"
+      - "&6&lFaction"
+      - "&6&lFactio"
+      - "&6&lFacti"
+      - "&6&lFact"
+      - "&6&lFac"
+      - "&6&lFa"
+      - "&6&lF"
+      #If this is true there will be a random line every time it updates.
+      #If it is false than it will rotate through them and you can make some animations with it.
+      random: false
+      #The time between updates, 20 ticks is 1 second.
+      #Every x ticks it will go to the next line, if random is false, once all lines are displayed it will go to the first line.
+      interval: 2
+    #This section is the first line, here you set the data of that line. It doesn't matter what the name of the section is, as long
+    # as there is no other section with the exact same name
+    line-1:
+      text:
+      - ""
+      random: false
+      interval: 80
+      score: 10
+    line-6:
+      text:
+      - '&6&l%player_name%'
+      random: false
+      interval: 80
+      score: 9
+    line-7:
+      text:
+      - '&7&l* &ePengar &7» &a$%vault_eco_balance_commas%'
+      random: false
+      interval: 80
+      score: 8
+    line-8:
+      text:
+      - '&7&l* &eTokens &7» &6⛃%tokens_current_long%'
+      random: false
+      interval: 80
+      score: 7
+    line-3:
+      text:
+      - '&7&l* &eFaction &7» &f%factionsuuid_faction_name%'
+      random: false
+      interval: 80
+      score: 6
+    line-10:
+      text:
+      - '&r'
+      random: false
+      interval: 80
+      score: 5
+    line-11:
+      text:
+      - '&6&lOutposts'
+      random: false
+      interval: 80
+      score: 4
+    line-12:
+      text:
+      - '&7&l* &eDarkzone &7» &f%outpost_capped_team_Darkzone%'
+      random: false
+      interval: 80
+      score: 3
+    line-13:
+      text:
+      - '&7&l* &eR-Post &7» &f%javascript_rpost_faction%'
+      random: false
+      interval: 80
+      score: 2
+    line-14:
+      text:
+      - '&r'
+      random: false
+      interval: 80
+      score: 1
+    line-15:
+      text:
+      - "&7&obutik.tribusmc.eu"
+      random: false
+      interval: 80
+      score: 0
+#You are able to add more lines to the scoreboard if you want, this scoreboard is just to explain all the possibilities of this plugin.

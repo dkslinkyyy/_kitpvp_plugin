@@ -4,6 +4,8 @@ import com.avaje.ebean.validation.NotNull;
 import com.cryptomorin.xseries.XItemStack;
 import com.cryptomorin.xseries.XMaterial;
 import eu.tribusmc.tribuskitpvp.Core;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -18,6 +20,8 @@ public class GUIItem {
     private String[] lore;
     private IAction action;
     private String title;
+    private boolean hideAttributes = false;
+    private boolean glow = false;
 
 
     public GUIItem(String paramInternalName, XMaterial paramMaterial) {
@@ -67,6 +71,17 @@ public class GUIItem {
         return this;
     }
 
+    @NotNull
+    public GUIItem hideAttributes() {
+        this.hideAttributes = true;
+        return this;
+    }
+
+    @NotNull
+    public GUIItem glow() {
+        this.glow = true;
+        return this;
+    }
 
     public ItemStack getOutcome() {
         if(lore == null && title == null) return material.parseItem();
@@ -82,6 +97,14 @@ public class GUIItem {
         ItemStack item = material.parseItem();
 
         if(amount > 1) item.setAmount(amount);
+
+        if (glow) {
+            meta.addEnchant(Enchantment.OXYGEN, 1, true);
+        }
+
+        if (hideAttributes) {
+            meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_POTION_EFFECTS, ItemFlag.HIDE_UNBREAKABLE);
+        }
 
         item.setItemMeta(meta);
         return item;

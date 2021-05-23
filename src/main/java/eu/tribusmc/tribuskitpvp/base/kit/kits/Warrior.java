@@ -14,7 +14,7 @@ public class Warrior extends Kit {
 
     @Override
     public int getSlot() {
-        return 10;
+        return 11;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Warrior extends Kit {
 
     @Override
     public XMaterial getHoldingItem() {
-        return XMaterial.IRON_HELMET;
+        return XMaterial.GOLDEN_SWORD;
     }
 
     @Override

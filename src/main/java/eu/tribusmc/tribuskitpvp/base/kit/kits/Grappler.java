@@ -4,7 +4,7 @@ import com.cryptomorin.xseries.XMaterial;
 import eu.tribusmc.tribuskitpvp.base.kit.Kit;
 import eu.tribusmc.tribuskitpvp.base.ability.abilities.GrapplingHookAbility;
 
-public class Grappler extends Kit{
+public class Grappler extends Kit {
 
     public Grappler() {
         super("Grappler", new GrapplingHookAbility());
@@ -12,7 +12,7 @@ public class Grappler extends Kit{
 
     @Override
     public int getSlot() {
-        return 11;
+        return 12;
     }
 
     @Override

@@ -1,0 +1,38 @@
+prefix: '&6&lTribusMC &8» '
+nopermission: '%prefix&cOkänt kommando.'
+toggle:
+  'on': '%prefix&7Scoreboard &aaktiverat&7.'
+  'off': '%prefix&7Scoreboard &cavaktiverat&7.'
+  on_other_target: '%prefix&7Din scoreboard har &aaktiverats&7 av %e%sender%&7.'
+  on_other_sender: '%prefix&7Du &aaktiverade &7scoreboarden för &e%target%&7.'
+  off_other_target: '%prefix&7Din scoreboard har &cavaktiverats&7 av %e%sender%&7.'
+  off_other_sender: '%prefix&7Du &cavaktiverade &7scoreboarden för &e%target%&7.'
+reload:
+  start: '%prefix&7Omladdning påbörjas...'
+  completed: '%prefix&aAlla filer omladdade! (%MS%ms)'
+switch:
+  error: '%prefix&cVar vänlig ange en giltlig scoreboard.'
+  success: '%prefix&7Bytte till scoreboarden vid namn &e%scoreboard%&7.'
+  nopermission: '%prefix&cDu har inte tillåtelse att byta till scoreboarden %scoreboard%.'
+  world: '%prefix&cDenna scoreboard är inte tillåten i denna värld.'
+  already_activated: '%prefix&cYDu använder redan denna scoreboard.'
+  already_active_other: '%prefix&c%target% använder redan %scoreboard% scoreboarden.'
+  success_other: '%prefix&aSuccessfully switched the scoreboard of %target% to %scoreboard%!'
+  success_by_other: '%prefix&aYour scoreboard was switched by %sender%!'
+  world_other: '%prefix&c%target% cannot activate %scoreboard% in their world!'
+  nopermission_other: '%prefix&c%target% doesn''t have the permission to view %scoreboard%!'
+trigger:
+  insert: '%prefix&cFailed to insert the trigger listener, triggers will not work!'
+  register:
+    invalid: '%prefix&cFailed to activate trigger for class: %class_name%, Invalid
+      class name!'
+    second: '%prefix&cFailed to activate trigger for class: %class_name%, Trigger
+      already active!'
+    invalid-method: '%prefix&cFailed to activate trigger for class: %class_name%,
+      Invalid method name!'
+plugin:
+  information: '%prefix&cOkänt kommando.'
+invalid_player: '%prefix&c%value% är inte online.'
+invalid_command: '%prefix&c''/%command%'' är inte ett giltligt kommando. Skriv ''/asb help''
+  för en lista av kommandon.'
+invalid_sender: '%prefix&cDetta kommando kan endast köras av en spelare.'

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class KitGUI extends GUI {
     public KitGUI(BaseImpl base, List<Kit> kits) {
-        super("kitsGui", "§6§lVÄLJ KIT", 9 * 4);
+        super("kitsGui", "§8» §6§lVÄLJ ETT KIT", 9 * 4);
 
         fill();
 
@@ -21,6 +21,7 @@ public class KitGUI extends GUI {
             addItem(new GUIItem(kit.getKitName(), kit.getHoldingItem())
                     .setTitle("§6§l" + StringUtils.capitalize(kit.getKitName().toLowerCase()))
                     .setLore(kit.getLore())
+                    .hideAttributes()
                     .setAction((a, ct, item, p) -> {
                         if (ct != null) {
                             p.getOpenInventory().close();
@@ -33,14 +34,14 @@ public class KitGUI extends GUI {
         });
 
 
-        addItem(new GUIItem("close", XMaterial.BARRIER)
+        addItem(new GUIItem("close", XMaterial.SPRUCE_DOOR)
                 .setTitle("§c§lStäng Menyn")
                 .setLore(new String[]{"", "§7Klicka för att stänga menyn", ""})
                 .setAction((a, ct, item, p) -> {
                     if (a != null) {
                         p.getOpenInventory().close();
                     }
-                }), 31);
+                }), 35);
     }
 
 

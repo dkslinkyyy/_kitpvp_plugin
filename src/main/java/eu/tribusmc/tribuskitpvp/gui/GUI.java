@@ -30,24 +30,23 @@ public abstract class GUI implements Listener {
 
 
     /**
-     *
      * Base Constructor, Creates a new GUI instance
      *
-     * @param paramPlayer        To invoke the players inventory
-     * @param paramInternalName  Internal name for the GUI instance
-     * @param paramTitle         Title for the GUI
+     * @param paramPlayer       To invoke the players inventory
+     * @param paramInternalName Internal name for the GUI instance
+     * @param paramTitle        Title for the GUI
      */
     private GUI(Player paramPlayer, String paramInternalName, String paramTitle, int paramSize) {
-            this.player = paramPlayer;
-            this.internalName = paramInternalName;
-            this.title = paramTitle;
-            this.size = paramSize;
+        this.player = paramPlayer;
+        this.internalName = paramInternalName;
+        this.title = paramTitle;
+        this.size = paramSize;
 
-            guiItems = new HashSet<>();
+        guiItems = new HashSet<>();
 
-            create();
+        create();
 
-            Core.i.getServer().getPluginManager().registerEvents(this, Core.i);
+        Core.i.getServer().getPluginManager().registerEvents(this, Core.i);
     }
 
     /**
@@ -58,7 +57,7 @@ public abstract class GUI implements Listener {
     }
 
     /**
-     *  Creates a new GUI instance based on the player, uses players inventory if not null.
+     * Creates a new GUI instance based on the player, uses players inventory if not null.
      */
     public GUI(String paramInternalName, Player paramPlayer) {
         this(paramPlayer, paramInternalName, null, 0);
@@ -79,8 +78,8 @@ public abstract class GUI implements Listener {
 
     @NotNull
     public void addItem(GUIItem guiItem) {
-         guiItems.add(guiItem);
-         inventory.addItem(guiItem.getOutcome());
+        guiItems.add(guiItem);
+        inventory.addItem(guiItem.getOutcome());
     }
 
     @NotNull
@@ -105,15 +104,26 @@ public abstract class GUI implements Listener {
 
     @NotNull
     private GUI create() {
-        if(player == null) inventory = Bukkit.createInventory(null, size, title);
+        if (player == null) inventory = Bukkit.createInventory(null, size, title);
         else inventory = player.getInventory();
         return this;
     }
 
     @NotNull
     public GUI open(Player player) {
-        if(inventory == null) create();
+        if (inventory == null) create();
         player.openInventory(inventory);
+        return this;
+    }
+
+    @NotNull
+    public GUI fill() {
+        for (int i = 0; i < inventory.getSize(); i++) {
+
+            GUIItem item = new GUIItem("fill", XMaterial.GRAY_STAINED_GLASS_PANE).setTitle(" ");
+
+            inventory.setItem(i, item.getOutcome());
+        }
         return this;
     }
 
@@ -121,8 +131,8 @@ public abstract class GUI implements Listener {
     @EventHandler
     public void onClick(InventoryClickEvent e) {
 
-        if(e.getCurrentItem() == null || e.getInventory() == null) return;
-        if(e.getCurrentItem().getItemMeta() == null) return;
+        if (e.getCurrentItem() == null || e.getInventory() == null) return;
+        if (e.getCurrentItem().getItemMeta() == null) return;
 
         GUIItem item = guiItems.stream().filter(gItem -> gItem.getTitle().equals(e.getCurrentItem().getItemMeta().getDisplayName())).findFirst().orElse(null);
 
@@ -136,8 +146,8 @@ public abstract class GUI implements Listener {
     @EventHandler
     public void onInteract(PlayerInteractEvent e) {
 
-        if(e.getItem() == null) return;
-        if(e.getItem().getItemMeta() == null) return;
+        if (e.getItem() == null) return;
+        if (e.getItem().getItemMeta() == null) return;
 
         GUIItem item = guiItems.stream().filter(gItem -> gItem.getTitle().equals(e.getItem().getItemMeta().getDisplayName())).findFirst().orElse(null);
 

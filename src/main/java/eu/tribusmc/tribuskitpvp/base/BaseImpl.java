@@ -82,21 +82,18 @@ public class BaseImpl implements Listener {
 
     @EventHandler
     public void onDamage(EntityDamageEvent e) {
+
         if (!(e.getEntity() instanceof Player)) return;
-
         if (e.getCause() == EntityDamageEvent.DamageCause.FALL) e.setCancelled(true);
-
-
-        //Loopa igenom alla kits
-        //Fetcha det kitet som Spelaren har
-        //hämta Ability instancen from kitet och utför det
-
 
     }
 
 
     @EventHandler
     public void onWeatherChange(WeatherChangeEvent e) {
+        
+        e.getWorld().setStorm(false);
+
     }
 
 
@@ -276,7 +273,6 @@ public class BaseImpl implements Listener {
             teleportToLobby(p);
         }).run(true);
 
-
         Titles.sendTitle(k, 5, 30, 5, "§e+13⛃", "");
 
         k.playSound(p.getLocation(), Sound.ORB_PICKUP, 1, 1);
@@ -305,6 +301,7 @@ public class BaseImpl implements Listener {
 
 
     public void loadKits(KitManager kitManager) {
+
         kitManager.addKit(new Warrior());
         kitManager.addKit(new Grappler());
         kitManager.addKit(new Switcher());

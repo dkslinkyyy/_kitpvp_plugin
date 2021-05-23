@@ -15,6 +15,8 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerFishEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
@@ -31,7 +33,7 @@ public class GrapplingHookAbility implements IAbility {
 
     @Override
     public ItemStack getHoldingItem() {
-        return new GUIItem("hook", XMaterial.FISHING_ROD).setTitle("§a§lGrappling Hook").getOutcome();
+        return new GUIItem("hook", XMaterial.FISHING_ROD).setTitle("§a§lGrappling Hook").glow().hideAttributes().getOutcome();
     }
 
     @Override
@@ -58,6 +60,13 @@ public class GrapplingHookAbility implements IAbility {
     public boolean onFishingRoodHook(PlayerFishEvent e) {
 
         if (e.getHook().getLocation().subtract(0, 1, 0).getBlock().getType().isSolid() || e.getHook().getLocation().getBlock().getType().isSolid()) {
+
+            Particle.send(e.getPlayer(), EnumParticle.CLOUD, new Float[]{0.3f,0.3f,0.3f}, 0f, 23, true);
+
+            Bukkit.getOnlinePlayers().forEach(oP -> {
+               oP.playSound(e.getHook().getLocation(), Sound.ITEM_BREAK, 1.5f, 1f);
+            });
+
             pullEntityToLocation(e.getPlayer(), e.getHook().getLocation());
             return true;
         }
