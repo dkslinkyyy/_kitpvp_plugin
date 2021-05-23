@@ -2,14 +2,9 @@ package eu.tribusmc.tribuskitpvp.gui;
 
 import com.cryptomorin.xseries.XMaterial;
 import eu.tribusmc.tribuskitpvp.base.BaseImpl;
-import eu.tribusmc.tribuskitpvp.base.kits.Kit;
+import eu.tribusmc.tribuskitpvp.base.kit.Kit;
 import eu.tribusmc.tribuskitpvp.base.player.TMCPlayer;
-import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.bukkit.entity.Player;
-import org.bukkit.event.block.Action;
-import org.bukkit.event.inventory.ClickType;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.Arrays;

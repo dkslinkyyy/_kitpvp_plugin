@@ -89,10 +89,17 @@ public abstract class GUI implements Listener {
         inventory.setItem(slot, guiItem.getOutcome());
     }
 
+
+    @NotNull
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
     @NotNull
     public Inventory getInventory() {
         return inventory;
     }
+
 
 
 
@@ -120,7 +127,7 @@ public abstract class GUI implements Listener {
         GUIItem item = guiItems.stream().filter(gItem -> gItem.getTitle().equals(e.getCurrentItem().getItemMeta().getDisplayName())).findFirst().orElse(null);
 
 
-        assert item != null;
+        if(item == null) return;
         if (item.getAction() == null) return;
         item.getAction().onAction(null, e.getClick(), e.getCurrentItem(), (Player) e.getWhoClicked());
         e.setCancelled(true);
@@ -134,7 +141,7 @@ public abstract class GUI implements Listener {
 
         GUIItem item = guiItems.stream().filter(gItem -> gItem.getTitle().equals(e.getItem().getItemMeta().getDisplayName())).findFirst().orElse(null);
 
-        assert item != null;
+        if(item == null) return;
         if (item.getAction() == null) return;
         item.getAction().onAction(e.getAction(), null, e.getItem(), e.getPlayer());
         e.setCancelled(true);

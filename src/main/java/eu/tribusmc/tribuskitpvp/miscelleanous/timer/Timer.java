@@ -17,7 +17,7 @@ public class Timer {
     private final int tmpTime;
     private int time;
 
-    private boolean reset, run;
+    private boolean reset, run, stop;
 
     private RunnableCode whenFinished, executable;
 
@@ -64,6 +64,10 @@ public class Timer {
                 if(!run) return;
                 switch (timerType) {
                     case DELAY:
+                        if(stop) {
+                            this.cancel();
+                            return;
+                        }
                         if (time == 0) {
                             executable.run(time);
                             if (reset) {
@@ -93,6 +97,11 @@ public class Timer {
                 }
             }
         }.runTaskTimer(Core.i, 0, 20L);
+    }
+
+
+    public void stop(boolean stop) {
+        this.stop = stop;
     }
 
     private void resetTime() {

@@ -1,21 +1,26 @@
-package eu.tribusmc.tribuskitpvp.base.kits.abilities;
+package eu.tribusmc.tribuskitpvp.base.ability.abilities;
 
 import com.cryptomorin.xseries.XMaterial;
-import com.cryptomorin.xseries.messages.ActionBar;
+import eu.tribusmc.tribuskitpvp.base.ability.IAbility;
 import eu.tribusmc.tribuskitpvp.gui.GUIItem;
-import eu.tribusmc.tribuskitpvp.miscelleanous.timer.Timer;
+import eu.tribusmc.tribuskitpvp.miscelleanous.Particle;
+import net.minecraft.server.v1_8_R3.EnumParticle;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.ProjectileHitEvent;
+import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-import java.awt.*;
+public class GrapplingHookAbility implements IAbility {
 
-public class GrapplingHook implements IAbility  {
-
-    public GrapplingHook() {
+    public GrapplingHookAbility() {
         System.out.println("ny instance");
     }
 
@@ -30,6 +35,11 @@ public class GrapplingHook implements IAbility  {
     }
 
     @Override
+    public boolean bypassCooldown() {
+        return false;
+    }
+
+    @Override
     public int getCooldownTime() {
         return 30;
     }
@@ -40,39 +50,52 @@ public class GrapplingHook implements IAbility  {
     }
 
     @Override
-    public void onPlayerDamage() {
+    public boolean onPlayerDamage(EntityDamageByEntityEvent e) {
+        return false;
     }
 
     @Override
-    public Outcome onFishingRoodHook(PlayerFishEvent e) {
+    public boolean onFishingRoodHook(PlayerFishEvent e) {
 
         if (e.getHook().getLocation().subtract(0, 1, 0).getBlock().getType().isSolid() || e.getHook().getLocation().getBlock().getType().isSolid()) {
             pullEntityToLocation(e.getPlayer(), e.getHook().getLocation());
-            return Outcome.SUCCESS;
+            return true;
         }
 
-        return Outcome.FAIL;
+        return false;
 
     }
 
     @Override
-    public void onPlaceBlock() {
+    public boolean onPlaceBlock(BlockPlaceEvent e) {
+        return false;
 
     }
 
     @Override
-    public void onBreakBlock() {
-
+    public boolean onBreakBlock(BlockBreakEvent e) {
+        return false;
     }
 
     @Override
-    public void onInteract() {
+    public boolean onInteract(PlayerInteractEvent e) {
+        return false;
+    }
 
+
+    @Override
+    public boolean onProjectileLaunch(ProjectileLaunchEvent e) {
+        return false;
     }
 
     @Override
-    public void onClick() {
+    public boolean onProjectileHit(ProjectileHitEvent e) {
+        return false;
+    }
 
+    @Override
+    public boolean onFlightToggle(PlayerToggleFlightEvent e) {
+        return false;
     }
 
     private void pullEntityToLocation(final Entity e, Location loc) {

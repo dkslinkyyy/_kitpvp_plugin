@@ -1,10 +1,8 @@
-package eu.tribusmc.tribuskitpvp.base.kits;
+package eu.tribusmc.tribuskitpvp.base.kit;
 
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XPotion;
-import eu.tribusmc.tribuskitpvp.Core;
-import eu.tribusmc.tribuskitpvp.base.kits.abilities.IAbility;
-import org.bukkit.Material;
+import eu.tribusmc.tribuskitpvp.base.ability.IAbility;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 

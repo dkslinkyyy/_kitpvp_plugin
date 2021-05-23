@@ -1,6 +1,4 @@
-package eu.tribusmc.tribuskitpvp.base.kits;
-
-import org.bukkit.entity.Player;
+package eu.tribusmc.tribuskitpvp.base.kit;
 
 import java.util.ArrayList;
 import java.util.List;

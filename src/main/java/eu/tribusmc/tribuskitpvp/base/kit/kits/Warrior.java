@@ -1,9 +1,8 @@
-package eu.tribusmc.tribuskitpvp.base.kits;
+package eu.tribusmc.tribuskitpvp.base.kit.kits;
 
 import com.cryptomorin.xseries.XMaterial;
-import eu.tribusmc.tribuskitpvp.Core;
-import eu.tribusmc.tribuskitpvp.base.kits.abilities.IAbility;
-import org.bukkit.Material;
+import eu.tribusmc.tribuskitpvp.base.ability.IAbility;
+import eu.tribusmc.tribuskitpvp.base.kit.Kit;
 
 
 public class Warrior extends Kit {

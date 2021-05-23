@@ -1,6 +1,7 @@
 package eu.tribusmc.tribuskitpvp.base.player;
 
-import eu.tribusmc.tribuskitpvp.base.kits.Kit;
+import eu.tribusmc.tribuskitpvp.base.effects.DeathEffect;
+import eu.tribusmc.tribuskitpvp.base.kit.Kit;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -12,6 +13,7 @@ public class TMCPlayer  {
     private final String playerName;
     private final int kills, deaths;
     private Kit kit;
+    private DeathEffect deathEffect;
 
     public TMCPlayer(UUID uuid, String playerName, int kills, int deaths) {
         this.uuid = uuid;
@@ -29,6 +31,14 @@ public class TMCPlayer  {
         return kit;
     }
 
+
+    public void setDeathEffect(DeathEffect deathEffect) {
+        this.deathEffect = deathEffect;
+    }
+
+    public DeathEffect getDeathEffect() {
+        return deathEffect;
+    }
 
     public UUID getUUID() {
         return uuid;
