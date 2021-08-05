@@ -1,8 +1,7 @@
 package eu.tribusmc.tribuskitpvp.base.kit.kits;
 
 import com.cryptomorin.xseries.XMaterial;
-import eu.tribusmc.tribuskitpvp.base.ability.IAbility;
-import eu.tribusmc.tribuskitpvp.base.ability.abilities.MjolnirAbility;
+import eu.tribusmc.tribuskitpvp.base.kit.ability.abilities.MjolnirAbility;
 import eu.tribusmc.tribuskitpvp.base.kit.Kit;
 
 public class Thor extends Kit {

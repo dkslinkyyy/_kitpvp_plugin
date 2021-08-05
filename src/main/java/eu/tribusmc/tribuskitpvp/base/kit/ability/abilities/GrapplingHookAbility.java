@@ -1,7 +1,9 @@
-package eu.tribusmc.tribuskitpvp.base.ability.abilities;
+package eu.tribusmc.tribuskitpvp.base.kit.ability.abilities;
 
 import com.cryptomorin.xseries.XMaterial;
-import eu.tribusmc.tribuskitpvp.base.ability.IAbility;
+import eu.tribusmc.tribuskitpvp.base.kit.ability.AbilityListener;
+import eu.tribusmc.tribuskitpvp.base.kit.ability.IAbility;
+import eu.tribusmc.tribuskitpvp.base.player.TMCPlayer;
 import eu.tribusmc.tribuskitpvp.gui.GUIItem;
 import eu.tribusmc.tribuskitpvp.miscelleanous.Particle;
 import net.minecraft.server.v1_8_R3.EnumParticle;
@@ -22,9 +24,6 @@ import org.bukkit.util.Vector;
 
 public class GrapplingHookAbility implements IAbility {
 
-    public GrapplingHookAbility() {
-        System.out.println("ny instance");
-    }
 
     @Override
     public String getInternalName() {
@@ -39,6 +38,19 @@ public class GrapplingHookAbility implements IAbility {
     @Override
     public boolean bypassCooldown() {
         return false;
+    }
+
+
+
+
+    @Override
+    public AbilityListener[] getListeners() {
+        return new AbilityListener[] {AbilityListener.FISHING_ROD};
+    }
+
+    @Override
+    public AbilityListener getMainListener() {
+        return AbilityListener.FISHING_ROD;
     }
 
     @Override
@@ -61,22 +73,25 @@ public class GrapplingHookAbility implements IAbility {
 
         if (e.getHook().getLocation().subtract(0, 1, 0).getBlock().getType().isSolid() || e.getHook().getLocation().getBlock().getType().isSolid()) {
 
-            Particle.send(e.getPlayer(), EnumParticle.CLOUD, new Float[]{0.3f,0.3f,0.3f}, 0f, 23, true);
+            Particle.send(e.getPlayer(), EnumParticle.CLOUD, new Float[]{0.3f, 0.3f, 0.3f}, 0f, 23, true);
 
             Bukkit.getOnlinePlayers().forEach(oP -> {
-               oP.playSound(e.getHook().getLocation(), Sound.ITEM_BREAK, 1.5f, 1f);
+                oP.playSound(e.getHook().getLocation(), Sound.ITEM_BREAK, 1.5f, 1f);
             });
 
             pullEntityToLocation(e.getPlayer(), e.getHook().getLocation());
+
             return true;
+
         }
+
 
         return false;
 
     }
 
     @Override
-    public boolean onPlaceBlock(BlockPlaceEvent e) {
+    public boolean onPlaceBlock(BlockPlaceEvent e, TMCPlayer player) {
         return false;
 
     }
@@ -125,5 +140,6 @@ public class GrapplingHookAbility implements IAbility {
         e.setVelocity(v);
 
     }
+
 
 }

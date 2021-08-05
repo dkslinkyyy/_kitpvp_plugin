@@ -4,6 +4,7 @@ import com.avaje.ebean.validation.NotNull;
 import com.cryptomorin.xseries.XMaterial;
 import eu.tribusmc.tribuskitpvp.Core;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -63,6 +64,23 @@ public abstract class GUI implements Listener {
         this(paramPlayer, paramInternalName, null, 0);
     }
 
+    public void loadListener(Core core) {
+        Bukkit.getServer().getPluginManager().registerEvents(this, core);
+    }
+
+    public void loadItemsForInventory(Player player) {
+        player.getInventory().clear();
+
+        System.out.println(inventory);
+        System.out.println(size);
+        if(size == 0) return;
+        for(int i = 0; i < size; i++) {
+            if(inventory.getItem(i) == null) continue;
+            if(inventory.getItem(i).getType() == Material.AIR) continue;
+            player.getInventory().setItem(i, inventory.getItem(i));
+        }
+    }
+
     @NotNull
     public GUI setTile(String paramTitle) {
         this.title = paramTitle;
@@ -75,6 +93,10 @@ public abstract class GUI implements Listener {
         return this;
     }
 
+    @NotNull
+    public String getInternalName() {
+        return internalName;
+    }
 
     @NotNull
     public void addItem(GUIItem guiItem) {

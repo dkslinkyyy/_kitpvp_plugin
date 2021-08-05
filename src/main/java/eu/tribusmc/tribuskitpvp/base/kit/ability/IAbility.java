@@ -1,5 +1,6 @@
-package eu.tribusmc.tribuskitpvp.base.ability;
+package eu.tribusmc.tribuskitpvp.base.kit.ability;
 
+import eu.tribusmc.tribuskitpvp.base.player.TMCPlayer;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -18,6 +19,12 @@ public interface IAbility {
 
     boolean bypassCooldown();
 
+
+
+    AbilityListener[] getListeners();
+
+    AbilityListener getMainListener();
+
     int getCooldownTime();
 
     int getHoldingSlot();
@@ -26,7 +33,7 @@ public interface IAbility {
 
     boolean onFishingRoodHook(PlayerFishEvent e);
 
-    boolean onPlaceBlock(BlockPlaceEvent e);
+    boolean onPlaceBlock(BlockPlaceEvent e, TMCPlayer player);
 
     boolean onBreakBlock(BlockBreakEvent e);
 

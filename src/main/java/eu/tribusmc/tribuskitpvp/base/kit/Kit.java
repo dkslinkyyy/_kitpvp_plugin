@@ -2,7 +2,7 @@ package eu.tribusmc.tribuskitpvp.base.kit;
 
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XPotion;
-import eu.tribusmc.tribuskitpvp.base.ability.IAbility;
+import eu.tribusmc.tribuskitpvp.base.kit.ability.IAbility;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -20,7 +20,6 @@ public abstract class Kit {
     public abstract String[] getLore();
     public abstract XMaterial getHoldingItem();
 
-
     public IAbility getAbility() {
         return ability;
     }
@@ -30,7 +29,7 @@ public abstract class Kit {
 
         XPotion speed = XPotion.SPEED;
 
-        p.addPotionEffect(speed.parsePotion(10000, 1));
+        p.addPotionEffect(speed.parsePotion(36000, 1));
         ItemStack splash = XMaterial.POTION.parseItem();
         assert splash != null;
         splash.setDurability((short) 16421);
@@ -43,10 +42,10 @@ public abstract class Kit {
             p.getInventory().setItem(getAbility().getHoldingSlot(), getAbility().getHoldingItem());
 
         p.getInventory().setItem(0, XMaterial.DIAMOND_SWORD.parseItem());
-        p.getInventory().setHelmet(XMaterial.IRON_HELMET.parseItem());
+        p.getInventory().setHelmet(XMaterial.DIAMOND_HELMET.parseItem());
         p.getInventory().setChestplate(XMaterial.IRON_CHESTPLATE.parseItem());
         p.getInventory().setLeggings(XMaterial.IRON_LEGGINGS.parseItem());
-        p.getInventory().setBoots(XMaterial.IRON_BOOTS.parseItem());
+        p.getInventory().setBoots(XMaterial.DIAMOND_BOOTS.parseItem());
     }
 
     public void clear(Player p) {
@@ -61,9 +60,7 @@ public abstract class Kit {
 
 
 
-
-
-    public String getKitName() {
+    public String getName() {
         return kitName;
     }
 }

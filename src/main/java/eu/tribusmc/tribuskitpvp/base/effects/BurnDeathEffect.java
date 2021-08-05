@@ -8,6 +8,10 @@ import org.bukkit.entity.Player;
 
 public class BurnDeathEffect extends DeathEffect {
 
+    public BurnDeathEffect() {
+        super("BURN");
+    }
+
     @Override
     public void execute(Player victim) {
         Particle.send(victim, EnumParticle.FLAME, new Float[]{0.2f, 0.2f, 0.2f}, 0.1f, 25, true);

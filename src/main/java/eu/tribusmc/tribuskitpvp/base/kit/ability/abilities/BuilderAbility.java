@@ -1,7 +1,9 @@
-package eu.tribusmc.tribuskitpvp.base.ability.abilities;
+package eu.tribusmc.tribuskitpvp.base.kit.ability.abilities;
 
 import com.cryptomorin.xseries.XMaterial;
-import eu.tribusmc.tribuskitpvp.base.ability.IAbility;
+import eu.tribusmc.tribuskitpvp.base.kit.ability.AbilityListener;
+import eu.tribusmc.tribuskitpvp.base.kit.ability.IAbility;
+import eu.tribusmc.tribuskitpvp.base.player.TMCPlayer;
 import eu.tribusmc.tribuskitpvp.gui.GUIItem;
 import eu.tribusmc.tribuskitpvp.miscelleanous.timer.Timer;
 import net.minecraft.server.v1_8_R3.EnumParticle;
@@ -19,9 +21,6 @@ import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.ItemStack;
 import eu.tribusmc.tribuskitpvp.miscelleanous.Particle;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class BuilderAbility implements IAbility {
 
     @Override
@@ -38,6 +37,19 @@ public class BuilderAbility implements IAbility {
     public boolean bypassCooldown() {
         return true;
     }
+
+
+
+    @Override
+    public AbilityListener[] getListeners() {
+        return new AbilityListener[] {AbilityListener.BUILD};
+    }
+
+    @Override
+    public AbilityListener getMainListener() {
+        return AbilityListener.BUILD;
+    }
+
 
 
     @Override
@@ -62,7 +74,7 @@ public class BuilderAbility implements IAbility {
 
 
     @Override
-    public boolean onPlaceBlock(BlockPlaceEvent e) {
+    public boolean onPlaceBlock(BlockPlaceEvent e, TMCPlayer player) {
 
         final Player p = e.getPlayer();
         final Block b = e.getBlock();
@@ -72,8 +84,8 @@ public class BuilderAbility implements IAbility {
 
         if (e.getBlockPlaced().getType() != item.getType()) return false;
 
-        Timer timer = new Timer(Timer.TimerType.REPEATABLE, 4);
-        Timer timer2 = new Timer(Timer.TimerType.DELAY, 9);
+        Timer timer = new Timer(Timer.TimerType.REPEATABLE, 4, 20);
+        Timer timer2 = new Timer(Timer.TimerType.DELAY, 9, 20);
 
         timer.execute(time -> {
 

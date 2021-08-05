@@ -13,6 +13,9 @@ import org.bukkit.util.Vector;
 public class FireworkDeathEffect extends DeathEffect {
 
 
+    public FireworkDeathEffect() {
+        super("FIREWORk");
+    }
 
     @Override
     public void execute(Player victim) {
@@ -24,7 +27,7 @@ public class FireworkDeathEffect extends DeathEffect {
             online.playSound(victim.getLocation(), Sound.FIREWORK_LAUNCH, 1, 1);
         });
 
-        Timer timer = new Timer(Timer.TimerType.DELAY, 1);
+        Timer timer = new Timer(Timer.TimerType.DELAY, 1, 20);
 
 
         timer.execute(time -> {

@@ -15,14 +15,14 @@ public class Timer {
 
 
     private final int tmpTime;
-    private int time;
+    private int time, tick;
 
     private boolean reset, run, stop;
 
     private RunnableCode whenFinished, executable;
 
 
-    public Timer(TimerType timerType, int time) {
+    public Timer(TimerType timerType, int time, int tick) {
         this.timerType = timerType;
         this.time = time == 0 ? time = 10 : time;
         this.tmpTime = time;
@@ -69,7 +69,8 @@ public class Timer {
                             return;
                         }
                         if (time == 0) {
-                            executable.run(time);
+                            if(executable != null) executable.run(time);
+
                             if (reset) {
                                 resetTime();
                             } else {
@@ -80,6 +81,10 @@ public class Timer {
                         time--;
                         break;
                     case REPEATABLE:
+                        if(stop) {
+                            this.cancel();
+                            return;
+                        }
                         if (time == 0) {
                             if (whenFinished != null) whenFinished.run(time);
                             if (reset) {
@@ -96,13 +101,15 @@ public class Timer {
                         break;
                 }
             }
-        }.runTaskTimer(Core.i, 0, 20L);
+        }.runTaskTimer(Core.i, 0, tick);
     }
 
 
     public void stop(boolean stop) {
         this.stop = stop;
     }
+
+
 
     private void resetTime() {
         this.time = tmpTime;
@@ -115,7 +122,7 @@ public class Timer {
     }
 
     public enum TimerType {
-        REPEATABLE, DELAY;
+        REPEATABLE, DELAY, INFINITE;
 
 
     }

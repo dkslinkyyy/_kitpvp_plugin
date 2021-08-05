@@ -1,6 +1,8 @@
-package eu.tribusmc.tribuskitpvp.base.ability.abilities;
+package eu.tribusmc.tribuskitpvp.base.kit.ability.abilities;
 
-import eu.tribusmc.tribuskitpvp.base.ability.IAbility;
+import eu.tribusmc.tribuskitpvp.base.kit.ability.AbilityListener;
+import eu.tribusmc.tribuskitpvp.base.kit.ability.IAbility;
+import eu.tribusmc.tribuskitpvp.base.player.TMCPlayer;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -11,7 +13,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class IceWalkerAbility implements IAbility {
+public class BomberAbility implements IAbility {
 
 
     @Override
@@ -27,6 +29,18 @@ public class IceWalkerAbility implements IAbility {
     @Override
     public boolean bypassCooldown() {
         return false;
+    }
+
+
+
+    @Override
+    public AbilityListener[] getListeners() {
+        return new AbilityListener[0];
+    }
+
+    @Override
+    public AbilityListener getMainListener() {
+        return null;
     }
 
     @Override
@@ -50,7 +64,7 @@ public class IceWalkerAbility implements IAbility {
     }
 
     @Override
-    public boolean onPlaceBlock(BlockPlaceEvent e) {
+    public boolean onPlaceBlock(BlockPlaceEvent e, TMCPlayer player) {
         return false;
     }
 
@@ -63,9 +77,6 @@ public class IceWalkerAbility implements IAbility {
     public boolean onInteract(PlayerInteractEvent e) {
         return false;
     }
-
-
-
 
     @Override
     public boolean onProjectileLaunch(ProjectileLaunchEvent e) {

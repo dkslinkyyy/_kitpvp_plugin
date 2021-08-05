@@ -11,7 +11,7 @@ import java.util.List;
 public class AddSpawnpointCommand extends SubCommand{
 
     public AddSpawnpointCommand() {
-        super("kitpvp", "addpoint", "tribusmc.admin", "");
+        super("tribuskitpvp", "addpoint", "tribusmc.admin", "");
     }
 
     @Override

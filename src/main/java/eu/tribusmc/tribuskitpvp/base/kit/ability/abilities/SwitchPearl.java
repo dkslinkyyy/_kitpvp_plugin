@@ -1,8 +1,9 @@
-package eu.tribusmc.tribuskitpvp.base.ability.abilities;
+package eu.tribusmc.tribuskitpvp.base.kit.ability.abilities;
 
 import com.cryptomorin.xseries.XMaterial;
-import eu.tribusmc.tribuskitpvp.Core;
-import eu.tribusmc.tribuskitpvp.base.ability.IAbility;
+import eu.tribusmc.tribuskitpvp.base.kit.ability.AbilityListener;
+import eu.tribusmc.tribuskitpvp.base.kit.ability.IAbility;
+import eu.tribusmc.tribuskitpvp.base.player.TMCPlayer;
 import eu.tribusmc.tribuskitpvp.gui.GUIItem;
 import eu.tribusmc.tribuskitpvp.miscelleanous.Particle;
 import net.minecraft.server.v1_8_R3.EnumParticle;
@@ -43,6 +44,16 @@ public class SwitchPearl implements IAbility {
     }
 
     @Override
+    public AbilityListener[] getListeners() {
+        return new AbilityListener[] {AbilityListener.PLAYER_DAMAGE, AbilityListener.PROJECTILE_LAUNCH, AbilityListener.PROJECTILE_HIT};
+    }
+
+    @Override
+    public AbilityListener getMainListener() {
+        return AbilityListener.PROJECTILE_LAUNCH;
+    }
+
+    @Override
     public int getCooldownTime() {
         return 30;
     }
@@ -63,6 +74,7 @@ public class SwitchPearl implements IAbility {
 
         if (!switchPearls.contains(snowball)) return false;
 
+
         e.setCancelled(true);
 
         Player damagedPlayer = (Player) e.getEntity();
@@ -71,8 +83,10 @@ public class SwitchPearl implements IAbility {
         Location damagedPlayerLoc = damagedPlayer.getLocation();
         Location switchPearlThrowerLoc = switchPearlThrower.getLocation();
 
+
         damagedPlayer.teleport(switchPearlThrowerLoc);
         switchPearlThrower.teleport(damagedPlayerLoc);
+
 
         Particle.send(damagedPlayer, EnumParticle.SPELL_WITCH, new Float[]{0.5f, 0.5f, 0.5f}, 0.2f, 20, true);
         Particle.send(switchPearlThrower, EnumParticle.SPELL_WITCH, new Float[]{0.5f, 0.5f, 0.5f}, 0.2f, 20, true);
@@ -93,7 +107,7 @@ public class SwitchPearl implements IAbility {
     }
 
     @Override
-    public boolean onPlaceBlock(BlockPlaceEvent e) {
+    public boolean onPlaceBlock(BlockPlaceEvent e, TMCPlayer player) {
         return false;
     }
 
@@ -113,12 +127,9 @@ public class SwitchPearl implements IAbility {
 
         if (!(e.getEntity() instanceof Snowball)) return false;
 
-        Snowball snowball = (Snowball) e.getEntity();
-        Player shooter = (Player) e.getEntity().getShooter();
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(Core.i, () -> {
-          shooter.getInventory().setItem(shooter.getInventory().getHeldItemSlot(), getHoldingItem());
-        }, 1L);
+        Snowball snowball = (Snowball) e.getEntity();
+
 
         switchPearls.add(snowball);
 

@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 public class SetSpawnCommand extends SubCommand{
 
     public SetSpawnCommand() {
-        super("kitpvp", "setspwn", "tribusmc.admi", "");
+        super("tribuskitpvp", "setspwn", "tribusmc.admi", "");
     }
 
     @Override

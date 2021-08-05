@@ -2,7 +2,7 @@ package eu.tribusmc.tribuskitpvp.base.kit.kits;
 
 import com.cryptomorin.xseries.XMaterial;
 import eu.tribusmc.tribuskitpvp.base.kit.Kit;
-import eu.tribusmc.tribuskitpvp.base.ability.abilities.GrapplingHookAbility;
+import eu.tribusmc.tribuskitpvp.base.kit.ability.abilities.GrapplingHookAbility;
 
 public class Grappler extends Kit {
 
