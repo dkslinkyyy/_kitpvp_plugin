@@ -105,9 +105,8 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.8.8-R0.3-SNAPSHOT</version>
-            <systemPath>${project.basedir}/depend/spigot.jar</systemPath>
-            <scope>system</scope>
+            <version>1.21.1-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>me.clip</groupId>
