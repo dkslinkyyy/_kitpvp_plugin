@@ -3,6 +3,8 @@
 
 pom.xml
 
+*.xml
+
 *.iml
 *.ipr
 *.iws
